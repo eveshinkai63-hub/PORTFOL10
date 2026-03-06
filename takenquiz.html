@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Taken Quiz Upload</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">Portfolio</div>
+
+    <div class="nav-links">
+        <a href="Portpolio.html">Home</a>
+        <a href="takenquiz.html" class="active">Taken Quiz</a>
+    </div>
+
+</nav>
+
+
+<div class="main-container">
+
+    <div class="box upload-box">
+
+        <h2>Upload Taken Quiz</h2>
+        <p>Select your completed quiz file.</p>
+
+        <input type="file" id="quizFile" onchange="previewFile()">
+
+        <br><br>
+
+        <button class="upload-btn">Upload</button>
+
+        <img id="preview" src="" alt="Quiz Preview">
+
+    </div>
+
+
+    <div class="box progress-box">
+
+        <h2>My Current Progress</h2>
+
+        <div class="progress-item">
+            <p>Quizzes</p>
+
+            <div class="progress-bar">
+                <div class="progress" style="width:70%">70%</div>
+            </div>
+        </div>
+
+
+        <div class="progress-item">
+            <p>Activities</p>
+
+            <div class="progress-bar">
+                <div class="progress" style="width:80%">80%</div>
+            </div>
+        </div>
+
+
+        <div class="progress-item">
+            <p>Exam</p>
+
+            <div class="progress-bar">
+                <div class="progress" style="width:60%">60%</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
