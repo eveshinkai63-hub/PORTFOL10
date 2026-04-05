@@ -126,9 +126,9 @@
   <div class="logo">Portfolio</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="takenquiz.html">Taken Quiz</a>
     <a href="upload.html">Upload</a>
-   
+    <a href="dashboard.html" class="active">Dashboard</a>
   </div>
 </nav>
 
@@ -195,7 +195,16 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  let entries = JSON.parse(localStorage.getItem('dash_entries') || '[]');
+  const defaultEntries = [
+    { id:1, type:'quiz', title:'Quiz 1',         date:'March 5, 2025',  file:'quiz1.pdf', proof:null, edState:null, status:'submitted' },
+    { id:2, type:'quiz', title:'Quiz 2',         date:'March 12, 2025', file:'quiz2.pdf', proof:null, edState:null, status:'submitted' },
+    { id:3, type:'quiz', title:'Quiz 3',         date:'March 20, 2025', file:'quiz3.pdf', proof:null, edState:null, status:'submitted' },
+    { id:4, type:'lab',  title:'Lab Activity 1', date:'March 8, 2025',  file:'lab1.pdf',  proof:null, edState:null, status:'submitted' },
+  ];
+  const saved = JSON.parse(localStorage.getItem('dash_entries') || '[]');
+  const savedIds = saved.map(e => e.id);
+  const defaults = defaultEntries.filter(e => !savedIds.includes(e.id));
+  let entries = [...defaults, ...saved];
   let currentFilter = 'all';
   let activeEntry = null;
 
@@ -207,7 +216,10 @@
   const ctx    = canvas.getContext('2d');
   const eBox   = document.getElementById('editor-box');
 
-  function saveLS() { localStorage.setItem('dash_entries', JSON.stringify(entries)); }
+  function saveLS() {
+    const toSave = entries.filter(e => !defaultEntries.find(d => d.id === e.id) || e.proof || e.edState);
+    localStorage.setItem('dash_entries', JSON.stringify(toSave));
+  }
 
   const typeIcon  = { quiz:'📝', lab:'🔬', exam:'📋' };
   const typeLabel = { quiz:'Quiz', lab:'Lab Activity', exam:'Major Exam' };
