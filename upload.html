@@ -200,7 +200,7 @@
     /* ── Success toast ── */
     .toast {
       position: fixed;
-      bottom: 30px; left: 50%;
+      top: 80px; left: 50%;
       transform: translateX(-50%);
       background: black; color: white;
       padding: 14px 28px;
@@ -208,11 +208,11 @@
       font-size: 14px;
       font-weight: 500;
       box-shadow: 0 8px 24px rgba(0,0,0,.2);
-      
       z-index: 999;
       white-space: nowrap;
+      display: none;
     }
-    .toast.show { }
+    .toast.show { display: block; }
 
     /* ── Status badge ── */
     .status-badge {
@@ -242,7 +242,7 @@
   <div class="logo">Portfolio</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="dashboard.html">Taken Quiz</a>
+    <a href="dashboard.html">Dashboard</a>
     <a href="upload.html" class="active">Upload</a>
   </div>
 </nav>
