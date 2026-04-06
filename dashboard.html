@@ -10,7 +10,7 @@
 
     .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: black; color: white; }
     .logo { font-size: 22px; font-weight: bold; }
-    .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; transition: color .2s; }
+    .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
     .nav-links a:hover, .nav-links a.active { color: #aaa; }
 
     .hero { text-align: center; padding: 36px 20px 10px; }
@@ -25,7 +25,7 @@
     .summary-card.black-card .lbl { color: #999; }
 
     .tabs { display: flex; justify-content: center; gap: 10px; padding: 24px 20px 0; flex-wrap: wrap; }
-    .tab-btn { padding: 8px 22px; border-radius: 30px; border: 1.5px solid #ccc; background: white; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s; }
+    .tab-btn { padding: 8px 22px; border-radius: 30px; border: 1.5px solid #ccc; background: white; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; }
     .tab-btn:hover { border-color: black; }
     .tab-btn.active { background: black; color: white; border-color: black; }
 
@@ -34,8 +34,8 @@
     .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
 
     /* Card */
-    .item-card { background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,.08); overflow: hidden; transition: transform .25s, box-shadow .25s; position: relative; }
-    .item-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(0,0,0,.13); }
+    .item-card { background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,.08); overflow: hidden; position: relative; }
+    .item-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
 
     /* ✕ delete on hover */
     .card-del {
@@ -44,7 +44,7 @@
       background: rgba(0,0,0,.72); color: white; border: none;
       font-size: 12px; cursor: pointer; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .18s, background .18s;
+      opacity: 0;
     }
     .item-card:hover .card-del { opacity: 1; }
     .card-del:hover { background: #c62828; }
@@ -65,16 +65,16 @@
     .empty-state { text-align: center; padding: 60px 20px; color: #999; grid-column: 1/-1; }
     .empty-state .big { font-size: 48px; margin-bottom: 12px; }
 
-    .add-card { background: white; border-radius: 16px; border: 2px dashed #d0d0d0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px; cursor: pointer; transition: border-color .2s, transform .2s; text-decoration: none; color: #999; }
-    .add-card:hover { border-color: black; color: #333; transform: translateY(-4px); }
+    .add-card { background: white; border-radius: 16px; border: 2px dashed #d0d0d0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px; cursor: pointer; text-decoration: none; color: #999; }
+    .add-card:hover { border-color: black; color: #333; }
     .add-card .plus { font-size: 36px; margin-bottom: 8px; }
     .add-card p { font-size: 13px; font-weight: 500; }
 
     /* ── MODAL ── */
     .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 100; align-items: center; justify-content: center; padding: 16px; }
     .modal-backdrop.open { display: flex; }
-    .modal { background: white; border-radius: 20px; padding: 28px 28px 24px; width: 500px; max-width: 100%; max-height: 92vh; overflow-y: auto; position: relative; animation: popIn .22s ease; }
-    @keyframes popIn { from { transform: scale(.93); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal { background: white; border-radius: 20px; padding: 28px 28px 24px; width: 500px; max-width: 100%; max-height: 92vh; overflow-y: auto; position: relative; }
+    
     .modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 22px; cursor: pointer; color: #666; }
     .modal h3 { font-size: 17px; font-weight: 700; padding-right: 30px; margin-bottom: 3px; }
     .m-meta { font-size: 12px; color: #999; margin-bottom: 16px; }
@@ -99,7 +99,7 @@
     .m-file .fi { font-size: 18px; }
 
     .modal-actions { display: flex; gap: 8px; margin-top: 14px; }
-    .modal-actions > * { flex: 1; padding: 10px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; border: none; transition: background .18s; display: block; }
+    .modal-actions > * { flex: 1; padding: 10px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; border: none; display: block; }
     .btn-change { background: #f0f0f0; color: #333; }
     .btn-change:hover { background: #e0e0e0; }
     .btn-save { background: black; color: white; }
@@ -114,8 +114,8 @@
     .cbtn.yes { background: #c62828; color: white; }
     .cbtn.no  { background: #eee; color: #333; }
 
-    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: black; color: white; padding: 11px 24px; border-radius: 30px; font-size: 13px; font-weight: 500; box-shadow: 0 6px 20px rgba(0,0,0,.2); transition: transform .35s cubic-bezier(.34,1.56,.64,1); z-index: 999; }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: black; color: white; padding: 11px 24px; border-radius: 30px; font-size: 13px; font-weight: 500; box-shadow: 0 6px 20px rgba(0,0,0,.2); z-index: 999; }
+    .toast.show { }
 
     #m-img-input { display: none; }
   </style>
@@ -126,9 +126,9 @@
   <div class="logo">Portfolio</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="takenquiz.html">Taken Quiz</a>
     <a href="upload.html">Upload</a>
-    
+    <a href="dashboard.html" class="active">Dashboard</a>
   </div>
 </nav>
 
