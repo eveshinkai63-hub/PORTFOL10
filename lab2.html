@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+       font-family: Arial, Helvetica, sans-serif;
+       background-color: #f4f4f4;
+       text-align: center;
+       display: flex;
+       align-items: center;
+       height: 100vh;
+       margin: 0;
+       color:black;
+       position: relative;
+    }
+    body.dark {
+        background-color: #121212;
+        color:white;
+    }
+    body.dark .container {
+        background-color: #333;
+    }
+    body.dark .button button {
+        background-color: #444;
+    }
+    body.dark .button button:hover {
+        background-color:#666;
+    }
+    h2 {
+        margin-bottom: 20px;
+        color:white;
+    }
+   .container {
+    width: 600px;
+    padding: 30px;
+    margin: 100px auto;
+    background: gray;
+    border-radius: 5px;
+    border: black solid 1px;
+   }
+   input {
+    padding: 10px;
+    margin: 10px;
+    width: 180px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+   }
+   #alertBtn {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    padding: 10px 15px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+  #toggleLight {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background:#222;
+    color:white;
+    cursor: pointer;
+  }
+   .button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+   }
+   .button button {
+    padding: 10px 15px;
+    background:#007bff;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+   }
+   .button button:hover {
+    background-color:#0056b3;
+   }
+</style>
+<body>
+    <button id="alertBtn" onclick="sayHello()">ALERT</button>
+    <button id="toggleLight" onclick = "toggleMode()">Enter Light/Dark Mode</button>
+
+    <div class="container">
+        <h2>SIMPLE CALCULATOR</h2>
+
+        <input type="text" id="num1" placeholder="Enter The First Number">
+        <input type="text" id="num2" placeholder="Enter The Second Number">
+
+        <div class = "button">
+        <button onclick="add()"> Add (+)</button>
+        <button onclick="subtract()"> subtract (-)</button>
+        <button onclick="multiply()"> multiply (*)</button>
+        <button onclick="divide()"> divide (/)</button>
+        <button onclick="clearFields()"> clear </button>
+        </div>
+        <h3>Result; <span id = "result">0</span></h3>
+    </div>
+    <script>
+        function getValues() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            return {num1, num2};
+        }
+        function add() {
+            let {num1, num2} = getValues();
+            document.getElementById('result').textContent = num1 + num2;
+        }
+        function subtract() {
+            let {num1, num2} = getValues();
+            document.getElementById('result').textContent = num1 - num2;
+        }
+        function multiply() {
+            let {num1, num2} = getValues();
+            document.getElementById('result').textContent = num1 * num2;
+        }
+        function divide() {
+            let {num1, num2} = getValues();
+           if(num2===0){
+            document.getElementById('result').textContent = 'error, division by zero'
+           } else {
+            document.getElementById('result').textContent = num1 / num2;
+           }
+        }
+        function clearFields() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('result').textContent = 0;
+        }
+        function sayHello() {
+    let message = 'Hello, welcome to my calculator!';
+    alert(message);
+    console.log('Alert button clicked');
+}
+        function toggleMode() {
+            let body = document.body;
+            let button = document.getElementById('toggleLight');
+
+            body.classList.toggle('dark');
+
+            if(body.classList.contains('dark')) {
+                button.textContent = 'Light Mode';
+            } else {
+                button.textContent = 'Dark Mode'
+            }
+        }
+    </script>
+</body>
+</html>
